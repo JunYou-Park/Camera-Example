@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.Camera2Activity">
+
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/preview_camera_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"/>
+
+    <com.camera.utils.AutoFitSurfaceView
+        android:id="@+id/afs_camera_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_camera_back"
+                android:layout_width="@dimen/tip_button_size"
+                android:layout_height="@dimen/tip_button_size"
+                android:scaleType="centerInside"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="14dp"
+                app:tint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close_24" />
+
+            <ImageView
+                android:id="@+id/iv_camera_flash"
+                android:layout_width="@dimen/tip_button_size"
+                android:layout_height="@dimen/tip_button_size"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_fill_flash_off_24" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/line_camera_title_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/bg_ellipse"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/line_camera_progress_layout"
+        app:layout_constraintStart_toStartOf="@+id/line_camera_progress_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+
+        <ImageView
+            android:id="@+id/iv_camera_state"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginEnd="6dp"
+            app:srcCompat="@drawable/ic_record"
+            app:tint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/tv_camera_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="00:00"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/line_camera_progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_marginTop="2dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/line_camera_title_layout">
+
+
+        <TextView
+            android:id="@+id/tv_camera_file_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:text="0 KB"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
+        <ProgressBar
+            android:id="@+id/pb_camera_file_size"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_weight="1"
+            android:max="950"
+            android:progressDrawable="@drawable/bg_progress_bar" />
+
+        <TextView
+            android:id="@+id/tv_camera_file_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:gravity="center"
+            android:text="950 KB"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_camera_scale"
+        android:layout_width="188dp"
+        android:layout_height="188dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_white_circle"
+        android:backgroundTint="@color/scale_background"
+        android:gravity="center"
+        android:text="1.0x"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@+id/preview_camera_view"
+        app:layout_constraintBottom_toBottomOf="@+id/preview_camera_view"
+        app:layout_constraintStart_toStartOf="@+id/preview_camera_view"
+        app:layout_constraintEnd_toEndOf="@+id/preview_camera_view" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const_camera_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="205dp" />
+
+        <ImageView
+            android:id="@+id/iv_camera_capture"
+            android:layout_width="@dimen/large_button_size"
+            android:layout_height="@dimen/large_button_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_selector_capture"
+            tools:ignore="ImageContrastCheck" />
+
+        <ImageView
+            android:id="@+id/iv_camera_switch"
+            android:layout_width="@dimen/regular_button_size"
+            android:layout_height="@dimen/regular_button_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_guideline"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_layer_rotate" />
+
+
+        <ImageView
+            android:id="@+id/iv_camera_pause"
+            android:layout_width="@dimen/large_button_size"
+            android:layout_height="@dimen/large_button_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_layer_pause" />
+
+        <ImageView
+            android:id="@+id/iv_camera_stop"
+            android:layout_width="@dimen/regular_button_size"
+            android:layout_height="@dimen/regular_button_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:srcCompat="@drawable/ic_layer_stop" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const_camera_save_progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <View
+            android:id="@+id/view_save_overlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@color/black_overlay"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:indeterminateTint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/tv_camera_progress_state"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_camera_progress_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카메라 준비중"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_save_overlay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:foreground="@android:color/transparent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/preview_camera_view"
+        app:layout_constraintEnd_toEndOf="@+id/preview_camera_view"
+        app:layout_constraintStart_toStartOf="@+id/preview_camera_view"
+        app:layout_constraintTop_toTopOf="@+id/preview_camera_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

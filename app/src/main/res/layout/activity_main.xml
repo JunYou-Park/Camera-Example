@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PermissionsActivity">
+
+    <Button
+        android:id="@+id/btn_camerax_picture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CameraX - Picture"
+        android:textAllCaps="false"/>
+
+
+    <Button
+        android:id="@+id/btn_camerax_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CameraX - Video"
+        android:textAllCaps="false"/>
+
+
+    <Button
+        android:id="@+id/btn_camera2_picture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Camera2 - Picture"
+        android:visibility="gone"
+        android:textAllCaps="false"/>
+
+
+    <Button
+        android:id="@+id/btn_camera2_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Camera2 - Video"
+        android:textAllCaps="false"/>
+
+</LinearLayout>
